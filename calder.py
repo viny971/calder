@@ -29,6 +29,10 @@ def dessineCercle(x1,x2,y,p1,p2,dessin):
 	dessin.create_oval(x2,y,x4,y4,fill=colors[j])
 	dessineLigne(x1,x3,x2,x4,y,p1,p2,dessin)
 
+'''def construitMobile(l):
+
+	if(len(l) == 1 or len(l) = 2):'''
+		
 fenetre = Tk()
 
 dessin = Canvas(fenetre, width =500, height=500)
