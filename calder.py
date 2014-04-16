@@ -27,7 +27,6 @@ def dessineCercle2(x1,x2,y,p1,p2,dessin):
 	y4 = y + 2*sqrt(p2)
 	i = randrange(len(colors))
 	j = randrange(len(colors))
-	print("colors[",i,"] = ",colors[i],"colors[",j,"] = ",colors[j])
 	dessin.create_oval(x3,y,x5,y3,fill=colors[i])
 	dessin.create_oval(x4,y,x6,y4,fill=colors[j])
 	#dessineLigne1(x1,x3,x2,x4,y,p1,p2,dessin)
@@ -38,21 +37,10 @@ def dessineLigne2(x,y,p1,p2,l,dessin):
 	x1 = x - l1
 	x2 = x + (l-l1)
 
-	dessin.create_line(x,y,x,y+50)
+	dessin.create_line(x,y,x,y + 50)
 	dessin.create_line(x1,y+50,x2,y+50)
 	dessin.create_line(x1,y+50,x1,y+100)
 	dessin.create_line(x2,y+50,x2,y+100)
-
-
-'''def construitMobile(x,y,p1,p2,l,dessin):
-
-	l1 = (p2*l)/(p1+p2)
-	x1 = x - l1
-	x2 = x + (l-l1)
-	
-	
-	dessineLigne2(x,y,p1,p2,l,dessin)
-	dessineCercle2(x1,x2,y+100,p1,p2,dessin)'''
 
 
 def sum(t):
@@ -114,23 +102,70 @@ def construitMobile(x,y,t,l,dessin):
 
 		
 
-p1 = randrange(100,2000)
-p2 = randrange(100,2000)
 
-t = [[500,300],[800,1000],[400,700]]
+#t = [[1000,500],[800,1000],[400,700],[850,354],[200,600],2000]
+
+def construitListe1(): #Permet à l'utilisateur de créer son propre mobile
+
+	l = []
+	t = []
+	e = 0
+	print("Combien de poids voulez-vous entrer ?")
+	n = int(input())
+	print("Entrez la liste des poids :");
+
+	for i in range(n):
+		e = int(input())	
+		t.append(e)
+		if (i+1)%2 == 0:
+			l.append(t)
+			t = []
+
+	if t != []: l.append(t[0])
+
+	return l
+
+def construitListe2(fic): #Construit un mobile à partir de poids écrit dans un fichier. Ecrit l'arbre correspondant dans un fichier
+
+	t, l, c = [], [], 0
+
+	fichier1 = open(fic, "r")
+	fichier2 = open("arbre2.txt", "a")
+
+	for ligne in fichier1:
+		
+		t.append(int(ligne.replace('\n','')))
+		c += 1
+		if c%2 == 0:	
+			l.append(t)
+			t = []
+	s = str(l)
+	fichier2.write(s)
+	print(l)			
+	return l
+
+def construitListe3(fic): #Construit un mobile à partir d'un arbre écrit dans un fichier
+
+	fichier = open(fic, "r")
+
+	ligne = fichier.readlines()[0]
+	print(ligne)
+	l = eval(ligne)
+
+	return l
+
+
+l = construitListe2("poids.txt")
 
 fenetre = Tk()
 
-dessin = Canvas(fenetre, width =1000, height=800)
-
+dessin = Canvas(fenetre, width=1000, height=800)
 dessin.pack()
-#construitMobile(500,0,p1,p2,500,dessin)
-#dessineLigne2(500,0,p1,p2,500,dessin)
-#dessin.create_oval(50,100,150,200,fill='blue')
-#dessin.create_oval(250,100,350,200,fill='red')
-#dessineCercle1(50,250,100,p1,p2,dessin)
-#dessineLigne(50,150,250,350,100,200,200,dessin)
-construitMobile(500,0,t,500,dessin)
+
+#fond = PhotoImage(file="pictures/p3.gif")
+#dessin.create_image(0,0,image=fond,anchor=NW)
+
+construitMobile(500,0,l,500,dessin)
 fenetre.mainloop()
 	
 	
