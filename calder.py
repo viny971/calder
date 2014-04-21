@@ -145,7 +145,7 @@ def construitListe2(fic): #Construit un mobile à partir de poids écrit dans un
 	return l
 
 def Andy(n):
-	return n+1:
+	return n+1
 
 def construitListe3(fic): #Construit un mobile à partir d'un arbre écrit dans un fichier
 
