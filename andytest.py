@@ -8,7 +8,7 @@ from random import *
 
 def dessineLigne1(x1,x2,x3,x4,y,p1,p2,dessin):
 	X1 = x1 + (x2-x1)/2
-    X2 = x3 + (x4-x3)/2
+	X2 = x3 + (x4-x3)/2
 	l1 = (p2*(X2-X1))/(p1+p2)
 	X = X1 + l1
 	dessin.create_line(X1,y,X1,y-50)
@@ -48,13 +48,13 @@ def sum(t):
 def construitMobile(x,y,t,l):
 	if len(t) == 1:
 		if isinstance(t[0],list):
-            p1 = t[0][0]
-            p2 = t[0][1]
-            l1 = (p2*l)/(p1+p2)
-        	x1 = x - l1
-        	x2 = x + (l-l1)
-        	dessineLigne2(x,y,p1,p2,l,dessin)
-            dessineCercle2(x1,x2,y+100,p1,p2,dessin)
+			p1 = t[0][0]
+			p2 = t[0][1]
+			l1 = (p2*l)/(p1+p2)
+			x1 = x - l1
+			x2 = x + (l-l1)
+			dessineLigne2(x,y,p1,p2,l,dessin)
+			dessineCercle2(x1,x2,y+100,p1,p2,dessin)
 		else:
 			i = randrange(len(colors))
 			dessin.create_line(x,y,x,y+50)
