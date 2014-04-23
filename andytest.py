@@ -27,7 +27,6 @@ def dessineCercle2(x1,x2,y,p1,p2,dessin):
 	j = randrange(len(colors))
 	dessin.create_oval(x3,y,x5,y3,fill=colors[i])
 	dessin.create_oval(x4,y,x6,y4,fill=colors[j])
-	#dessineLigne1(x1,x3,x2,x4,y,p1,p2,dessin)
     
 def dessineLigne2(x,y,p1,p2,l,dessin):
 	l1 = (p2*l)/(p1+p2)
@@ -184,7 +183,7 @@ entPdsNum.grid(row=3,column=1)
 entPdsAlea.grid(row=3,column=3)
 buttPdsAlea.grid(row=3,column=4)
 
-fond = PhotoImage(file="image3.gif")
+fond = PhotoImage(file="image3.gif") #Risque de pb vu que tu n'as pas l'image. Crée la (format gif) ou prends l'image que jt'ai envoyé via gmail
 dessin.create_image(500,500,image=fond)
 dessin.grid(row=4,columnspan=5)
 fenetre.mainloop()
